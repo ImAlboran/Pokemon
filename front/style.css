@@ -1,0 +1,83 @@
+body {
+    background-image: url('../assets/grassy_field.png');
+    background-size: cover; /* Ajuster l'image de fond pour couvrir toute la fenêtre */
+    background-position: center; /* Positionner l'image au centre */
+    background-repeat: no-repeat; /* Empêcher la répétition de l'image de fond */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    margin-top: 10px;
+    width: 200px;
+    height: 200px;
+}
+
+.health-bar-ia {
+    margin-top: 10px;
+    width: 300px;
+    height: 30px;
+    background-color: #ccc;
+    border: 2px solid #333;
+    position: relative;
+}
+
+.health-fill-ia {
+    height: 100%;
+    width: 100%; /* Modifiez cette ligne pour initialiser la barre de vie à 100% */
+    background-color: #4CAF50;
+    transition: width 0.3s ease-in-out;
+}
+
+.health-bar {
+    margin-top: 10px;
+    width: 300px;
+    height: 30px;
+    background-color: #ccc;
+    border: 2px solid #333;
+    position: relative;
+}
+
+.health-fill {
+    height: 100%;
+    width: 100%; /* Modifiez cette ligne pour initialiser la barre de vie à 100% */
+    background-color: #4CAF50;
+    transition: width 0.3s ease-in-out;
+}
+
+.pp-bar {
+    margin-top: 10px;
+    width: 300px;
+    height: 30px;
+    background-color: #ccc;
+    border: 2px solid #333;
+    position: relative;
+}
+
+.pp-fill {
+    height: 100%;
+    width: 100%; /* Modifiez cette ligne pour initialiser la barre de vie à 100% */
+    background-color: #504CAF;
+    transition: width 0.3s ease-in-out;
+}
+
+.attacks {
+    display: flex;
+    flex-direction: row;
+}
+
+.centre{
+    justify-content: center
+}
+
+button {
+    width: 150px;
+    height: 150px;
+    margin: 10px ;
+    position: relative;
+}

@@ -29,10 +29,32 @@ class Pokemon{
             const competenceUtilisee = this.competences[indexCompetence];
             console.log(`${this.nom} attaque ${cible.nom} avec ${competenceUtilisee.nom} et inflige ${competenceUtilisee.puissance} de dégâts.`);
             cible.pv -= competenceUtilisee.puissance;
+            console.log(`${cible.nom} a ${cible.pv} pv`);
         }else{
             console.log(`${this.nom} ne peut pas attaquer avec une compétence inexistante.`);
         }
     }
+
+    getNom() {
+        return this.nom;
+    }
+
+    getType() {
+        return this.type;
+    }
+
+    getPv() {
+        return this.pv;
+    }
+
+    getPp() {
+        return this.pp;
+    }
+
+    getCompetences() {
+        return this.competences;
+    }
+
 }
 
 class Competence {
@@ -62,11 +84,35 @@ const Type = {
     NORMAL: 'Normal'
 };
 
+const pokemonJ = new Pokemon("Carapuce", 'EAU', 150, 20);
+pokemonJ.ajouterCompetence("Pistolet a O", 'EAU', 50, 5);
+console.log(pokemonJ.getNom() + " commence avec " + pokemonJ.getPv() + " pv");
 
-class Jeu{
-    constructor(pokemonJ, pokemonIA){
-        this.pokemonJ = pokemonJ;
-        this.pokemonIA = pokemonIA;
+const pokemonIA = new Pokemon("Salameche", 'FEU', 100, 10);
+pokemonIA.ajouterCompetence("Braise", 'FEU', 20, 2);
+console.log(pokemonIA.getNom() + " commence avec " + pokemonIA.getPv() + " pv");
+
+while (pokemonJ.getPv() > 0 && pokemonIA.getPv() > 0) {
+
+    console.log(typeof(pokemonJ.getNom()));
+    console.log(typeof(pokemonJ.getType()));
+    console.log(typeof(pokemonJ.getPv()));
+    console.log(typeof(pokemonJ.getPp()));
+
+    if (pokemonJ.getPv() > 0) {
+        pokemonJ.attaquer(pokemonIA,0);
     }
+
+    if (pokemonIA.getPv() > 0) {
+        pokemonIA.attaquer(pokemonJ,0);
+    } 
 }
-  
+
+if (pokemonJ.getPv() > 0) {
+    console.log(pokemonJ.getNom() + " a gagne");
+} else {
+    console.log(pokemonIA.getNom() + " a gagne");
+}
+
+
+//barre de pp
