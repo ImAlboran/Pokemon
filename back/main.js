@@ -27,11 +27,72 @@ class Pokemon{
     attaquer(cible, indexCompetence) {
         if (indexCompetence >= 0 && indexCompetence < this.competences.length) {
             const competenceUtilisee = this.competences[indexCompetence];
-            console.log(`${this.nom} attaque ${cible.nom} avec ${competenceUtilisee.nom} et inflige ${competenceUtilisee.puissance} de dégâts.`);
-            cible.pv -= competenceUtilisee.puissance;
+            const efficacite = this.efficace(cible, indexCompetence);
+            //EFICACITE
+            //
+            console.log(`${this.nom} attaque ${cible.nom} avec ${competenceUtilisee.nom}`);
+            this.messageEfficacite(efficacite);
+            console.log(`${this.nom} inflige ${competenceUtilisee.puissance*efficacite} de dégâts.`);
+            cible.pv -= competenceUtilisee.puissance*efficacite;
             console.log(`${cible.nom} a ${cible.pv} pv`);
         }else{
             console.log(`${this.nom} ne peut pas attaquer avec une compétence inexistante.`);
+        }
+    }
+
+    efficace(cible, indexCompetence){
+        const competenceUtilisee = this.competences[indexCompetence];
+        if(competenceUtilisee.type === 'EAU' ){
+            if (cible.type === 'EAU') {
+                return 1;
+            }
+            if (cible.type === 'FEU') {
+                return 2;
+            }
+            if (cible.type === 'PLANTE') {
+                return 0.5;
+            }
+        }
+        if(competenceUtilisee.type === 'FEU' ){
+            if (cible.type === 'EAU') {
+                return 0.5;
+            }
+            if (cible.type === 'FEU') {
+                return 1;
+            }
+            if (cible.type === 'PLANTE') {
+                return 2;
+            }
+        }
+        if(competenceUtilisee.type === 'PLANTE' ){
+            if (cible.type === 'EAU') {
+                return 2;
+            }
+            if (cible.type === 'FEU') {
+                return 0.5;
+            }
+            if (cible.type === 'PLANTE') {
+                return 1;
+            }
+        }
+        if(competenceUtilisee.type === 'NORMAL' ){
+            return 1;
+        }
+    }
+
+    messageEfficacite(quotient_efficacite){
+        switch (quotient_efficacite) {
+            case 0.5:
+                console.log("C'est peu efficace");
+                break;
+            case 1:
+                console.log("Touche");
+                break;
+            case 2:
+                console.log("C'est tres efficace");
+                break;
+            default:
+                break;
         }
     }
 
@@ -84,20 +145,18 @@ const Type = {
     NORMAL: 'Normal'
 };
 
-const pokemonJ = new Pokemon("Carapuce", 'EAU', 150, 20);
-pokemonJ.ajouterCompetence("Pistolet a O", 'EAU', 50, 5);
+const pokemonJ = new Pokemon("Carapuce", 'EAU', 200, 20);
+pokemonJ.ajouterCompetence("Pistolet à O", 'EAU', 40, 5);
+pokemonJ.ajouterCompetence("Charge", 'NORMAL', 35, 2);
 console.log(pokemonJ.getNom() + " commence avec " + pokemonJ.getPv() + " pv");
 
-const pokemonIA = new Pokemon("Salameche", 'FEU', 100, 10);
-pokemonIA.ajouterCompetence("Braise", 'FEU', 20, 2);
+const pokemonIA = new Pokemon("Salameche", 'FEU', 200, 20);
+pokemonIA.ajouterCompetence("Flammèche", 'FEU', 40, 5);
+pokemonIA.ajouterCompetence("Griffe", 'NORMAL', 40, 2);
 console.log(pokemonIA.getNom() + " commence avec " + pokemonIA.getPv() + " pv");
 
 while (pokemonJ.getPv() > 0 && pokemonIA.getPv() > 0) {
 
-    console.log(typeof(pokemonJ.getNom()));
-    console.log(typeof(pokemonJ.getType()));
-    console.log(typeof(pokemonJ.getPv()));
-    console.log(typeof(pokemonJ.getPp()));
 
     if (pokemonJ.getPv() > 0) {
         pokemonJ.attaquer(pokemonIA,0);

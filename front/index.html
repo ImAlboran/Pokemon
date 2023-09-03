@@ -7,22 +7,30 @@
     <title>Barre de vie</title>
 </head>
 <body>
-    <div class="health-bar-ia">
-        <div class="health-fill-ia" id="health-fill-ia"></div>
-    </div>
-    <img src="../assets/salameche.png" alt="Salameche">
-    <img src="../assets/carapuce.png" alt="Carapuce">
-    <div class="health-bar">
-        <div class="health-fill" id="health-fill"></div>
-    </div>
-    <div class="pp-bar">
-        <div class="pp-fill" id="pp-fill"></div>
-    </div>
 
-    <div class="attacks">
-        <button onclick="reduceHealth()">Réduire les pv</button>
-        <button onclick="reducePp()">Réduire les pp</button>
-    </div>
+    <section class="hud-ia">
+        <div class="health-bar-ia">
+            <div class="health-fill-ia" id="health-fill-ia"></div>
+        </div>
+    </section>
+    
+    <img class="img-pokemon-ia" src="../assets/salameche.png" alt="Salameche">
+    <img class="img-pokemon-j" src="../assets/carapuce.png" alt="Carapuce">
+
+    <section class="hud-j">
+        <div class="health-bar">
+            <div class="health-fill" id="health-fill"></div>
+        </div>
+        <div class="pp-bar">
+            <div class="pp-fill" id="pp-fill"></div>
+        </div>
+    
+        <div class="attacks">
+            <button onclick="reduceHealth()">Réduire les pv</button>
+            <button onclick="reducePp()">Réduire les pp</button>
+        </div>
+    </section>
+    
     
     <script src="script.js"></script>
 </body>

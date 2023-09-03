@@ -1,5 +1,5 @@
 body {
-    background-image: url('../assets/grassy_field.png');
+    background-image: url('../assets/grassy_fields.png');
     background-size: cover; /* Ajuster l'image de fond pour couvrir toute la fenêtre */
     background-position: center; /* Positionner l'image au centre */
     background-repeat: no-repeat; /* Empêcher la répétition de l'image de fond */
@@ -16,6 +16,38 @@ img {
     margin-top: 10px;
     width: 200px;
     height: 200px;
+}
+
+button {
+    width: 150px;
+    height: 150px;
+    margin: 10px ;
+    position: relative;
+}
+
+.hud-ia{
+    position: absolute;
+    top: 40px; right: 380px;
+}   
+
+.hud-j{
+    position: absolute;
+    bottom: 0px;
+    right: 100px;
+}
+
+.img-pokemon-j{
+    position: absolute;
+    top: 450px; left: 300px;
+    width: 500px;
+    height: 500px;
+}
+
+.img-pokemon-ia{
+    position: absolute;
+    top: 100px; right: 250px;
+    width: 400px;
+    height: 400px;
 }
 
 .health-bar-ia {
@@ -75,9 +107,3 @@ img {
     justify-content: center
 }
 
-button {
-    width: 150px;
-    height: 150px;
-    margin: 10px ;
-    position: relative;
-}
